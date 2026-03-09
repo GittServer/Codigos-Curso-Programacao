@@ -1,0 +1,69 @@
+// ======================= ESSE CODIGO JAVA MOSTRA UMA JANELA COM DOIS BOTOES, FAZ APARECER & DESAPARECER UMA IMAGEM NA JANELA.
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class ExemploJanela {
+    // Painel customizado para desenhar a imagem de fundo
+    static class PainelDeFundo extends JPanel {
+        private Image imagem;
+
+        public void setImagem(String caminho) {
+            this.imagem = new ImageIcon(caminho).getImage();
+            repaint();
+        }
+
+        public void removerImagem() {
+            this.imagem = null;
+            repaint();
+        }
+
+        @Override
+        protected void paintComponent(Graphics g) {
+            super.paintComponent(g);
+            if (imagem != null) {
+                // Desenha a imagem ocupando todo o espaço do painel
+                g.drawImage(imagem, 0, 0, getWidth(), getHeight(), this);
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        JFrame janela = new JFrame("Minha Janela");
+        janela.setSize(1000, 600);
+        janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        // Criamos o nosso painel especial e definimos o fundo como branco
+        PainelDeFundo painelPrincipal = new PainelDeFundo();
+        painelPrincipal.setBackground(Color.WHITE);
+        painelPrincipal.setLayout(new FlowLayout());
+        
+        janela.setContentPane(painelPrincipal);
+
+        JButton botao1 = new JButton("Adicionar Imagem");
+        JButton botao2 = new JButton("Remover Imagem");
+
+        // Ação Botão 1: Adiciona e ajusta a imagem
+        botao1.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                // Substitua pelo caminho da sua imagem
+                painelPrincipal.setImagem("C:\\ADD\\WAllPaPeRs\\E GAMERS.jpg"); 
+            }
+        });
+
+        // Ação Botão 2: Remove a imagem e volta para o branco
+        botao2.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                painelPrincipal.removerImagem();
+            }
+        });
+
+        painelPrincipal.add(botao1);
+        painelPrincipal.add(botao2);
+
+        janela.setVisible(true);
+    }
+}
+// FIM CODE.
