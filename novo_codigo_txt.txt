@@ -1,3 +1,5 @@
+// ================================= USA ARQUIVO.TXT NO LUGAR DO JSON. ========== (USANDO ESSE).
+
 // Importa namespaces necessários para o programa
 using System; // Namespace para tipos fundamentais do .NET
 using System.Collections.Generic; // Namespace para coleções genéricas
