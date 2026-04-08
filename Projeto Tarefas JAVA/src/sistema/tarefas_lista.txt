@@ -1,0 +1,2 @@
+Novo 2;22/02/24;true
+OK;ok;true
